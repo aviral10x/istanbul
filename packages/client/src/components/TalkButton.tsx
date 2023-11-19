@@ -1,60 +1,60 @@
 // components/TalkButton.tsx
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import React, { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 const TalkButton: React.FC = () => {
-  const [isListening, setIsListening] = useState(false);
-  const [isFocused, setIsFocused] = useState(false);
+  const [isListening, setIsListening] = useState(false)
+  const [isFocused, setIsFocused] = useState(false)
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.code === "Space" && !isFocused) {
-        setIsListening(true);
+      if (event.code === 'Space' && !isFocused) {
+        setIsListening(true)
       }
-    };
+    }
 
     const handleKeyUp = (event: KeyboardEvent) => {
-      if (event.code === "Space") {
-        setIsListening(false);
+      if (event.code === 'Space') {
+        setIsListening(false)
       }
-    };
+    }
 
-    window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("keyup", handleKeyUp);
+    window.addEventListener('keydown', handleKeyDown)
+    window.addEventListener('keyup', handleKeyUp)
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("keyup", handleKeyUp);
-    };
-  }, [isFocused]);
+      window.removeEventListener('keydown', handleKeyDown)
+      window.removeEventListener('keyup', handleKeyUp)
+    }
+  }, [isFocused])
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value.length > 0) {
-      setIsListening(true);
+      setIsListening(true)
     } else {
-      setIsListening(false);
+      setIsListening(false)
     }
-  };
+  }
 
   return (
-    <div className="flex flex-col items-center justify-center p-4 m-5 rounded-lg shadow-xl">
-      <div className="w-full p-4 mb-4  rounded-lg shadow flex flex-col items-center">
+    <div className='flex flex-col items-center justify-center p-4 m-5 rounded-lg shadow-xl'>
+      <div className='w-full p-4 mb-4  rounded-lg shadow flex flex-col items-center'>
         <Image
-          src={isListening ? "/Cat3.jpg" : "/Cat2.jpg"}
-          alt="Hold to talk"
+          src={isListening ? '/Cat1.jpg' : '/Cat2.jpg'}
+          alt='Hold to talk'
           width={450}
           height={450}
-          className="rounded-lg" // Apply rounded corners.
+          className='rounded-lg' // Apply rounded corners.
 
           // Optional: Add layout="fill" if you want the image to fill the container
         />
       </div>
       <input
-        type="text"
+        type='text'
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         onChange={handleInput}
-        className="
+        className='
     w-1/2
     p-4
     text-lg
@@ -74,13 +74,13 @@ const TalkButton: React.FC = () => {
     hover:shadow-md 
     placeholder-gray-400 
     focus:placeholder-transparent
-  "
-        placeholder="Type something..."
+  '
+        placeholder='Type something...'
       />
 
       <p>Hold the spacebar or type in the box to talk</p>
     </div>
-  );
-};
+  )
+}
 
-export default TalkButton;
+export default TalkButton
