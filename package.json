@@ -1,16 +1,14 @@
 {
-  "name": "nexth",
-  "version": "0.2.0",
-  "license": "MIT",
+  "name": "EthInstanbul",
+  "packageManager": "yarn@4.0.1",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "dev": "yarn workspaces -pt run dev",
-    "build": "yarn workspaces -pt run build",
-    "test": "yarn workspaces -pt run test"
+    "start": "yarn workspace client dev"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/react": "^18.2.34"
+  }
 }
